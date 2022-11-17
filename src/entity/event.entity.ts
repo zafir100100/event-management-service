@@ -21,7 +21,7 @@ export class Event {
   @Column()
   end_at: Date;
 
-  // @OneToMany(type => Workshop, workshop => workshop.event_id, { eager: true })
-  // @JoinColumn()
-  // workshops: Workshop[];
+  @OneToMany(() => Workshop, (workshop) => workshop.event, { eager: true })
+  @JoinColumn()
+  workshops: Workshop[];
 }

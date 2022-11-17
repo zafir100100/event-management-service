@@ -4,7 +4,9 @@ import {
   Column,
   JoinColumn,
   OneToMany,
+  ManyToOne,
 } from 'typeorm';
+import { Event } from './event.entity';
 import { Reservation } from './reservation.entity';
 @Entity('workshops')
 export class Workshop {
@@ -26,7 +28,10 @@ export class Workshop {
   @Column()
   description: string;
 
-  // @OneToMany(type => Reservation, reservation => reservation.workshop_id, { eager: true })
-  // @JoinColumn()
-  // reservations: Reservation[];
+  @ManyToOne(() => Event, (event) => event.workshops)
+  event: Event;
+
+  @OneToMany(() => Reservation, (reservation) => reservation.workshop, { eager: true })
+  @JoinColumn()
+  reservations: Reservation[];
 }
