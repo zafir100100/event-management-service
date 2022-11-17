@@ -9,4 +9,5 @@ export const devConfig: MysqlConnectionOptions = {
   database: 'project1',
   entities: ['dist/**/*.entity{.ts,.js}'],
   synchronize: true,
+  logging: true,
 };
