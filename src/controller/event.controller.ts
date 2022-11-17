@@ -8,7 +8,7 @@ import { EventService } from 'src/provider/event.service';
 // }
 @Controller('events')
 export class EventController {
-    constructor(private eventsService: EventService) { }
+    constructor(private eventService: EventService) { }
     // @Post()
     // async create(@Body() createTodoDto: CreateTodoDto) {
     //     const todo = await this.todosService.create(createTodoDto);
@@ -19,7 +19,7 @@ export class EventController {
     // }
     @Get()
     async findAll(@Req() request: Request) {
-        const items = await this.eventsService.findAll()
+        const items = await this.eventService.findAll()
         return items;
         // const cats: Array<TodoInterface> = await this.todosService.findAll()
         // return cats
