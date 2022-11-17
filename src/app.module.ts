@@ -11,10 +11,9 @@ import { WorkshopModule } from './module/workshop.module';
     TypeOrmModule.forRoot(devConfig),
     EventModule,
     ReservationModule,
-    WorkshopModule
+    WorkshopModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-}
+export class AppModule {}

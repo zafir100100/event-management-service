@@ -1,27 +1,32 @@
-
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  JoinColumn,
+  OneToMany,
+} from 'typeorm';
 import { Reservation } from './reservation.entity';
 @Entity('workshops')
 export class Workshop {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    event_id: number;
+  @Column()
+  event_id: number;
 
-    @Column()
-    start_at: Date;
+  @Column()
+  start_at: Date;
 
-    @Column()
-    end_at: Date;
+  @Column()
+  end_at: Date;
 
-    @Column()
-    title: string;
+  @Column()
+  title: string;
 
-    @Column()
-    description: string;
+  @Column()
+  description: string;
 
-    // @OneToMany(type => Reservation, reservation => reservation.workshop_id, { eager: true })
-    // @JoinColumn()
-    // reservations: Reservation[];
+  // @OneToMany(type => Reservation, reservation => reservation.workshop_id, { eager: true })
+  // @JoinColumn()
+  // reservations: Reservation[];
 }

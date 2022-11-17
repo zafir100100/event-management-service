@@ -5,8 +5,8 @@ import { Workshop } from 'src/entity/workshop.entity';
 import { WorkshopService } from 'src/provider/workshop.service';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Workshop])],
-    controllers: [WorkshopController],
-    providers: [WorkshopService],
+  imports: [TypeOrmModule.forFeature([Workshop])],
+  controllers: [WorkshopController],
+  providers: [WorkshopService],
 })
-export class WorkshopModule { }
+export class WorkshopModule {}

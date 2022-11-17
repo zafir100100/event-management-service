@@ -5,8 +5,8 @@ import { Reservation } from 'src/entity/reservation.entity';
 import { ReservationService } from 'src/provider/reservation.service';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Reservation])],
-    controllers: [ReservationController],
-    providers: [ReservationService],
+  imports: [TypeOrmModule.forFeature([Reservation])],
+  controllers: [ReservationController],
+  providers: [ReservationService],
 })
-export class ReservationModule { }
+export class ReservationModule {}

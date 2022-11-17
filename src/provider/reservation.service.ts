@@ -5,9 +5,8 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class ReservationService {
-    constructor(
-        @InjectRepository(Reservation)
-        private reservationRepository: Repository<Reservation>,
-    ) { } 
-
+  constructor(
+    @InjectRepository(Reservation)
+    private reservationRepository: Repository<Reservation>,
+  ) {}
 }
