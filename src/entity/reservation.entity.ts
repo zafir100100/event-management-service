@@ -1,6 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { IsEmail } from 'class-validator';
-import { Event } from './event.entity';
 import { Workshop } from './workshop.entity';
 @Entity('reservations')
 export class Reservation {
