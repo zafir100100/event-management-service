@@ -2,21 +2,16 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { devConfig } from './config/database.config';
+import { EventModule } from './module/event.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '2222',
-      database: 'project1',
-      entities: [],
-      synchronize: true,
-    }),
+    TypeOrmModule.forRoot(devConfig),
+    EventModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {
+}
