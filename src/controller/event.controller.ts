@@ -9,6 +9,7 @@ import {
   Req,
 } from '@nestjs/common';
 import { Request } from 'express';
+import { GetActiveEventsDto } from 'src/dto/get-active-events.dto';
 import { GetEventDetailsDto } from 'src/dto/get-event-details.dto';
 import { EventService } from 'src/provider/event.service';
 // import { TodoInterface, TodosService } from 'src/provider/todo.service';
@@ -18,7 +19,7 @@ import { EventService } from 'src/provider/event.service';
 // }
 @Controller('events')
 export class EventController {
-  constructor(private eventService: EventService) {}
+  constructor(private eventService: EventService) { }
   // @Post()
   // async create(@Body() createTodoDto: CreateTodoDto) {
   //     const todo = await this.todosService.create(createTodoDto);
@@ -27,10 +28,15 @@ export class EventController {
   //     }
   //     return 'todo created successfully'
   // }
+  @Post('get-active-events')
+  async getActiveEvents(@Body() input: GetActiveEventsDto) {
+    const events = await this.eventService.getActiveEvents(input);
+    return events;
+  }
   @Post('get-event-details')
   async getEventDetails(@Body() input: GetEventDetailsDto) {
-      const event = await this.eventService.findOne(input);
-      return event;
+    const event = await this.eventService.getEventDetailsById(input);
+    return event;
   }
   @Get()
   async findAll(@Req() request: Request) {

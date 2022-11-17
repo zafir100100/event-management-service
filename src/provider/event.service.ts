@@ -1,11 +1,13 @@
 import { Body, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { GetActiveEventsDto } from 'src/dto/get-active-events.dto';
 import { GetEventDetailsDto } from 'src/dto/get-event-details.dto';
 // import { Todo } from 'src/entity/Todo.entity';
 import { Event } from 'src/entity/event.entity';
 import { Workshop } from 'src/entity/workshop.entity';
+import { ActiveEventsRO } from 'src/interfaces/event/ActiveEventsRO';
 import { EventDetailsRO } from 'src/interfaces/event/EventDetailsRO';
-import { Repository } from 'typeorm';
+import { Raw, Repository } from 'typeorm';
 // export interface TodoInterface {
 //     name: string,
 //     complete: boolean,
@@ -27,10 +29,29 @@ export class EventService {
   // findAll(): Promise<TodoInterface[]> {
   //     return this.todoRepository.find();
   // }
-  findAll() {
-    return this.eventRepository.find();
+  async findAll() {
+    return await this.eventRepository.find();
   }
-  async findOne(input: GetEventDetailsDto): Promise<EventDetailsRO> {
+  async getActiveEvents(input: GetActiveEventsDto): Promise<ActiveEventsRO> {
+    const eventsCount = await this.eventRepository.count({
+      where: {
+        start_at: Raw((alias) => `${alias} > NOW()`),
+      },
+    });
+    const events = await this.eventRepository.find({
+    });
+    let activeEventsRO: ActiveEventsRO = {
+      events: events,
+      pagination: {
+        total: eventsCount,
+        per_page: input.per_page,
+        total_pages: Math.ceil(eventsCount / input.per_page),
+        current_page: input.current_page,
+      }
+    }
+    return activeEventsRO;
+  }
+  async getEventDetailsById(input: GetEventDetailsDto): Promise<EventDetailsRO> {
     const event = await this.eventRepository.findOneBy({
       id: input.id,
     });
@@ -39,10 +60,6 @@ export class EventService {
         event_id: input.id,
       },
     });
-    // let [sum] = await this.workshopRepository
-    //   .createQueryBuilder("location")
-    //   .select("SUM(location.something)", "sum")
-    //   .getRawOne();
     let eventDetailsRO: EventDetailsRO = {
       id: event.id,
       title: event.title,
@@ -52,6 +69,7 @@ export class EventService {
     }
     return eventDetailsRO;
   }
+
 
   // update(id: string, data: any): Promise<any> {
   //     return this.todoRepository
