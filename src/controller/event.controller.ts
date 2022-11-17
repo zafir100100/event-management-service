@@ -9,6 +9,7 @@ import {
   Req,
 } from '@nestjs/common';
 import { Request } from 'express';
+import { GetEventDetailsDto } from 'src/dto/get-event-details.dto';
 import { EventService } from 'src/provider/event.service';
 // import { TodoInterface, TodosService } from 'src/provider/todo.service';
 // interface CreateTodoDto {
@@ -26,6 +27,11 @@ export class EventController {
   //     }
   //     return 'todo created successfully'
   // }
+  @Post('get-event-details')
+  async getEventDetails(@Body() input: GetEventDetailsDto) {
+      const event = await this.eventService.findOne(input);
+      return event;
+  }
   @Get()
   async findAll(@Req() request: Request) {
     const items = await this.eventService.findAll();

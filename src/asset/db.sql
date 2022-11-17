@@ -48,6 +48,9 @@ CREATE TABLE `reservations` (
 INSERT INTO project1.events (title,start_at,end_at) VALUES
 	 ('Demo Event','2023-11-05','2023-11-10');
 
+INSERT INTO project1.events (title,start_at,end_at) VALUES
+	 ('Demo Event 2','2023-12-05','2023-12-10');
+
 INSERT INTO project1.workshops (event_id,start_at,end_at,title,description) VALUES
 	 (1,'2023-11-05','2023-11-05','Demo Workshop','Demo Workshop description');
 
