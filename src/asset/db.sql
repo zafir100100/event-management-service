@@ -13,8 +13,8 @@ drop table if exists workshops;
 CREATE TABLE `events` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `start_at` date NOT NULL,
-  `end_at` date NOT NULL,
+  `start_at` datetime NOT NULL,
+  `end_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -23,8 +23,8 @@ CREATE TABLE `events` (
 CREATE TABLE `workshops` (
   `id` int NOT NULL AUTO_INCREMENT,
   `event_id` int NOT NULL,
-  `start_at` date NOT NULL,
-  `end_at` date NOT NULL,
+  `start_at` datetime NOT NULL,
+  `end_at` datetime NOT NULL,
   `title` varchar(200) NOT NULL,
   `description` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`),
