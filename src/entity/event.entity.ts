@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToMany } from 'typeorm';
+import { Workshop } from './workshop.entity';
 
 @Entity('events')
 export class Event {
@@ -13,4 +14,8 @@ export class Event {
 
     @Column()
     end_at: Date;
+
+    // @OneToMany(type => Workshop, workshop => workshop.event_id, { eager: true })
+    // @JoinColumn()
+    // workshops: Workshop[];
 }
