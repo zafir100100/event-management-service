@@ -1,26 +1,26 @@
-export interface Reservation {
-    id: number,
-    name: string,
-    email: string,
+export interface ReservationRO {
+  id: number;
+  name: string;
+  email: string;
 }
 
-export interface Event {
-    id: number,
-    title: string,
-    start_at: string,
-    end_at: string,
+export interface EventRO {
+  id: number;
+  title: string;
+  start_at: Date;
+  end_at: Date;
 }
 
-export interface Workshop {
-    id: number,
-    title: string,
-    description: string,
-    start_at: string,
-    end_at: string
+export interface WorkshopRO {
+  id: number;
+  title: string;
+  description: string;
+  start_at: Date;
+  end_at: Date;
 }
 
 export interface CreateReservationRO {
-    reservation: Reservation;
-    event: Event;
-    Workshop: Workshop;
+  reservation: ReservationRO;
+  event: EventRO;
+  workshop: WorkshopRO;
 }

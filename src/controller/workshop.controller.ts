@@ -1,9 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { GetWorkshopDetailsDto } from 'src/dto/get-workshop-details.dto';
 import { WorkshopService } from 'src/provider/workshop.service';
 

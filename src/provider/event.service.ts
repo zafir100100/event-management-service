@@ -14,7 +14,7 @@ export class EventService {
     private eventRepository: Repository<Event>,
     @InjectRepository(Workshop)
     private workshopRepository: Repository<Workshop>,
-  ) { }
+  ) {}
   async getActiveEvents(input: GetActiveEventsDto): Promise<ActiveEventsRO> {
     const eventsCount = await this.eventRepository.count({
       where: {
@@ -26,18 +26,20 @@ export class EventService {
         start_at: Raw((alias) => `${alias} > NOW()`),
       },
     });
-    let activeEventsRO: ActiveEventsRO = {
+    const activeEventsRO: ActiveEventsRO = {
       events: events,
       pagination: {
         total: eventsCount,
         per_page: input.per_page,
         total_pages: Math.ceil(eventsCount / input.per_page),
         current_page: input.current_page,
-      }
-    }
+      },
+    };
     return activeEventsRO;
   }
-  async getEventDetailsById(input: GetEventDetailsDto): Promise<EventDetailsRO> {
+  async getEventDetailsById(
+    input: GetEventDetailsDto,
+  ): Promise<EventDetailsRO> {
     const event = await this.eventRepository.findOneBy({
       id: input.id,
     });
@@ -46,13 +48,13 @@ export class EventService {
         event_id: input.id,
       },
     });
-    let eventDetailsRO: EventDetailsRO = {
+    const eventDetailsRO: EventDetailsRO = {
       id: event.id,
       title: event.title,
       start_at: event.start_at,
       end_at: event.end_at,
       total_workshops: workshopCount,
-    }
+    };
     return eventDetailsRO;
   }
 }

@@ -1,3 +1,3 @@
 export class GetEventDetailsDto {
-    readonly id: number;
+  readonly id: number;
 }

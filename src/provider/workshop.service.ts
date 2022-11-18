@@ -1,4 +1,4 @@
-import { Body, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GetWorkshopDetailsDto } from 'src/dto/get-workshop-details.dto';
 import { Event } from 'src/entity/event.entity';
@@ -16,7 +16,7 @@ export class WorkshopService {
     private workshopRepository: Repository<Workshop>,
     @InjectRepository(Reservation)
     private reservationRepository: Repository<Reservation>,
-  ) { }
+  ) {}
   async getActiveWorkshops() {
     const events = await this.eventRepository.find({
       where: {
@@ -24,11 +24,13 @@ export class WorkshopService {
       },
       relations: {
         workshops: true,
-      }
+      },
     });
     return events;
   }
-  async getWorkshopDetailsById(input: GetWorkshopDetailsDto): Promise<WorkshopDetailsRO> {
+  async getWorkshopDetailsById(
+    input: GetWorkshopDetailsDto,
+  ): Promise<WorkshopDetailsRO> {
     const workshop = await this.workshopRepository.findOneBy({
       id: input.id,
     });
@@ -37,14 +39,14 @@ export class WorkshopService {
         workshop_id: input.id,
       },
     });
-    let workshopDetailsRO: WorkshopDetailsRO = {
+    const workshopDetailsRO: WorkshopDetailsRO = {
       id: workshop.id,
       title: workshop.title,
       description: workshop.description,
       start_at: workshop.start_at,
       end_at: workshop.end_at,
       total_reservations: reservationCount,
-    }
+    };
     return workshopDetailsRO;
   }
 }

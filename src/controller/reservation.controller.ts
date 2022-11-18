@@ -1,8 +1,4 @@
-import {
-  Body,
-  Controller,
-  Post,
-} from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { CreateReservationDto } from 'src/dto/create-reservation.dto';
 import { ReservationService } from 'src/provider/reservation.service';
 

@@ -1,3 +1,3 @@
 export class GetWorkshopDetailsDto {
-    readonly id: number;
+  readonly id: number;
 }
