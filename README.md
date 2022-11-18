@@ -9,12 +9,18 @@ API EndPoints
 ------------------------------------------------------------------------------------------------------------
 
 POST events/get-active-events
+
 body:
+
+```JSON
 {
     "per_page": 1,
     "current_page": 2
 }
+```
 response:
+
+```JSON
 {
     "events": [
         {
@@ -32,15 +38,22 @@ response:
         "current_page": 2
     }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------
 
 POST events/get-event-details
 body:
+
+```JSON
 {
     "id": 1
 }
+```
+
 response:
+
+```JSON
 {
     "id": 1,
     "title": "Demo event 1",
@@ -48,11 +61,14 @@ response:
     "end_at": "2023-11-09T18:00:00.000Z",
     "total_workshops": 1
 }
+```
 
 ------------------------------------------------------------------------------------------------------------
 
 GET workshops/get-active-workshops
 response:
+
+```JSON
 [
     {
         "id": 1,
@@ -69,17 +85,24 @@ response:
         "workshops": []
     }
 ]
+```
 
 ------------------------------------------------------------------------------------------------------------
 
 POST workshops/get-workshop-details
-body: 
+body:
+
+```JSON
 {
     "name": "UserName12",
     "email": "username12@gmail.com",
     "workshop_id": 1
 }
+```
+
 response:
+
+```JSON
 {
     "reservation": {
         "id": 13,
@@ -100,17 +123,24 @@ response:
         "end_at": "2023-11-04T18:00:00.000Z"
     }
 }
+```
 
 ------------------------------------------------------------------------------------------------------------
 
 POST reservations/create-reservation
 body: 
+
+```JSON
 {
     "name": "UserName12",
     "email": "username12@gmail.com",
     "workshop_id": 1
 }
+```
+
 response:
+
+```JSON
 {
     "reservation": {
         "id": 13,
@@ -131,3 +161,4 @@ response:
         "end_at": "2023-11-04T18:00:00.000Z"
     }
 }
+```
