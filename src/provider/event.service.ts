@@ -55,15 +55,4 @@ export class EventService {
     }
     return eventDetailsRO;
   }
-  async getActiveWorkshops() {
-    const events = await this.eventRepository.find({
-      where: {
-        start_at: Raw((alias) => `${alias} > NOW()`),
-      },
-      relations: {
-        workshops: true,
-      }
-    });
-    return events;
-  }
 }

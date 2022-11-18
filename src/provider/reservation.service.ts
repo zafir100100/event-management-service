@@ -1,4 +1,4 @@
-import { Body, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateReservationDto } from 'src/dto/create-reservation.dto';
 import { Event } from 'src/entity/event.entity';

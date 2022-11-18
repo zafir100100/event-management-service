@@ -1,9 +1,7 @@
 import {
   Body,
   Controller,
-  Get,
   Post,
-  Req,
 } from '@nestjs/common';
 import { Request } from 'express';
 import { GetActiveEventsDto } from 'src/dto/get-active-events.dto';
@@ -23,10 +21,5 @@ export class EventController {
   async getEventDetails(@Body() input: GetEventDetailsDto) {
     const event = await this.eventService.getEventDetailsById(input);
     return event;
-  }
-  @Get('get-active-workshops')
-  async getActiveWorkshops() {
-    const workshops = await this.eventService.getActiveWorkshops();
-    return workshops;
   }
 }
