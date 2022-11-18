@@ -25,6 +25,8 @@ export class EventService {
       where: {
         start_at: Raw((alias) => `${alias} > NOW()`),
       },
+      skip: (eventsCount - input.current_page) * input.per_page,
+      take: input.per_page,
     });
     const activeEventsRO: ActiveEventsRO = {
       events: events,
