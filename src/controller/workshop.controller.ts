@@ -4,7 +4,6 @@ import {
   Get,
   Post,
 } from '@nestjs/common';
-import { Request } from 'express';
 import { GetWorkshopDetailsDto } from 'src/dto/get-workshop-details.dto';
 import { WorkshopService } from 'src/provider/workshop.service';
 

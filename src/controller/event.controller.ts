@@ -3,7 +3,6 @@ import {
   Controller,
   Post,
 } from '@nestjs/common';
-import { Request } from 'express';
 import { GetActiveEventsDto } from 'src/dto/get-active-events.dto';
 import { GetEventDetailsDto } from 'src/dto/get-event-details.dto';
 import { GetWorkshopDetailsDto } from 'src/dto/get-workshop-details.dto';
