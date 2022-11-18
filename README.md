@@ -1,6 +1,9 @@
 To run this project, you need to have a working installation of [Node.js](https://nodejs.org/en/)
+
 If you don't have NestJs, install it after node.js using npm i -g @nestjs/cli
-finally install node modules using npm install
+
+Finally install node modules using npm install
+
 To run the project, use npm run start:dev
 
 
@@ -43,6 +46,7 @@ response:
 ------------------------------------------------------------------------------------------------------------
 
 POST events/get-event-details
+
 body:
 
 ```JSON
@@ -66,6 +70,7 @@ response:
 ------------------------------------------------------------------------------------------------------------
 
 GET workshops/get-active-workshops
+
 response:
 
 ```JSON
@@ -90,6 +95,7 @@ response:
 ------------------------------------------------------------------------------------------------------------
 
 POST workshops/get-workshop-details
+
 body:
 
 ```JSON
@@ -128,6 +134,7 @@ response:
 ------------------------------------------------------------------------------------------------------------
 
 POST reservations/create-reservation
+
 body: 
 
 ```JSON
