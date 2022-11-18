@@ -1,73 +1,133 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+To run this project, you need to have a working installation of [Node.js](https://nodejs.org/en/)
+If you don't have NestJs, install it after node.js using npm i -g @nestjs/cli
+finally install node modules using npm install
+To run the project, use npm run start:dev
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+API EndPoints
 
-## Description
+------------------------------------------------------------------------------------------------------------
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+POST events/get-active-events
+body:
+{
+    "per_page": 1,
+    "current_page": 2
+}
+response:
+{
+    "events": [
+        {
+            "id": 2,
+            "title": "Demo Event 2",
+            "start_at": "2023-12-04T18:00:00.000Z",
+            "end_at": "2023-12-09T18:00:00.000Z",
+            "workshops": []
+        }
+    ],
+    "pagination": {
+        "total": 2,
+        "per_page": 1,
+        "total_pages": 2,
+        "current_page": 2
+    }
+}
 
-## Installation
+------------------------------------------------------------------------------------------------------------
 
-```bash
-$ npm install
-```
+POST events/get-event-details
+body:
+{
+    "id": 1
+}
+response:
+{
+    "id": 1,
+    "title": "Demo event 1",
+    "start_at": "2023-11-04T18:00:00.000Z",
+    "end_at": "2023-11-09T18:00:00.000Z",
+    "total_workshops": 1
+}
 
-## Running the app
+------------------------------------------------------------------------------------------------------------
 
-```bash
-# development
-$ npm run start
+GET workshops/get-active-workshops
+response:
+[
+    {
+        "id": 1,
+        "title": "Demo workshop 1",
+        "start_at": "2023-11-04T18:00:00.000Z",
+        "end_at": "2023-11-09T18:00:00.000Z",
+        "workshops": []
+    },
+    {
+        "id": 2,
+        "title": "Demo workshop 2",
+        "start_at": "2023-12-04T18:00:00.000Z",
+        "end_at": "2023-12-09T18:00:00.000Z",
+        "workshops": []
+    }
+]
 
-# watch mode
-$ npm run start:dev
+------------------------------------------------------------------------------------------------------------
 
-# production mode
-$ npm run start:prod
-```
+POST workshops/get-workshop-details
+body: 
+{
+    "name": "UserName12",
+    "email": "username12@gmail.com",
+    "workshop_id": 1
+}
+response:
+{
+    "reservation": {
+        "id": 13,
+        "name": "User Name 12",
+        "email": "username12@gmail.com"
+    },
+    "event": {
+        "id": 1,
+        "title": "",
+        "start_at": "2023-11-04T18:00:00.000Z",
+        "end_at": "2023-11-09T18:00:00.000Z"
+    },
+    "workshop": {
+        "id": 1,
+        "title": "",
+        "description": "",
+        "start_at": "2023-11-04T18:00:00.000Z",
+        "end_at": "2023-11-04T18:00:00.000Z"
+    }
+}
 
-## Test
+------------------------------------------------------------------------------------------------------------
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+POST reservations/create-reservation
+body: 
+{
+    "name": "UserName12",
+    "email": "username12@gmail.com",
+    "workshop_id": 1
+}
+response:
+{
+    "reservation": {
+        "id": 13,
+        "name": "User Name 12",
+        "email": "username12@gmail.com"
+    },
+    "event": {
+        "id": 1,
+        "title": "",
+        "start_at": "2023-11-04T18:00:00.000Z",
+        "end_at": "2023-11-09T18:00:00.000Z"
+    },
+    "workshop": {
+        "id": 1,
+        "title": "",
+        "description": "",
+        "start_at": "2023-11-04T18:00:00.000Z",
+        "end_at": "2023-11-04T18:00:00.000Z"
+    }
+}

@@ -10,7 +10,7 @@ import { Raw, Repository } from 'typeorm';
 @Injectable()
 export class WorkshopService {
   constructor(
-    @InjectRepository(Workshop)
+    @InjectRepository(Event)
     private eventRepository: Repository<Event>,
     @InjectRepository(Workshop)
     private workshopRepository: Repository<Workshop>,
