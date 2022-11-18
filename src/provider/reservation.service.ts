@@ -17,11 +17,8 @@ export class ReservationService {
     private eventRepository: Repository<Reservation>,
   ) { }
   async createReservation(input: CreateReservationDto) {
-    // const events = await this.reservationRepository.find({
-    // });
     return this.reservationRepository.save(
       this.reservationRepository.create(input)
     );
-    // return events;
   }
 }

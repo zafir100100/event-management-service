@@ -1,14 +1,8 @@
 import {
   Body,
   Controller,
-  Delete,
-  Get,
-  Param,
   Post,
-  Put,
-  Req,
 } from '@nestjs/common';
-import { Request } from 'express';
 import { CreateReservationDto } from 'src/dto/create-reservation.dto';
 import { ReservationService } from 'src/provider/reservation.service';
 
