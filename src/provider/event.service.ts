@@ -2,11 +2,13 @@ import { Body, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GetActiveEventsDto } from 'src/dto/get-active-events.dto';
 import { GetEventDetailsDto } from 'src/dto/get-event-details.dto';
+import { GetWorkshopDetailsDto } from 'src/dto/get-workshop-details.dto';
 // import { Todo } from 'src/entity/Todo.entity';
 import { Event } from 'src/entity/event.entity';
 import { Workshop } from 'src/entity/workshop.entity';
 import { ActiveEventsRO } from 'src/interfaces/event/ActiveEventsRO';
 import { EventDetailsRO } from 'src/interfaces/event/EventDetailsRO';
+import { WorkshopDetailsRO } from 'src/interfaces/workshop/WorkshopDetailsRO';
 import { Raw, Repository } from 'typeorm';
 // export interface TodoInterface {
 //     name: string,
@@ -82,6 +84,25 @@ export class EventService {
       }
     });
     return events;
+  }
+  async getWorkshopDetailsById(input: GetWorkshopDetailsDto): Promise<WorkshopDetailsRO> {
+    const workshop = await this.workshopRepository.findOneBy({
+      id: input.id,
+    });
+    // const reservationCount = await this.reservationRepository.count({
+    //   where: {
+    //     workshop_id: input.id,
+    //   },
+    // });
+    let workshopDetailsRO: WorkshopDetailsRO = {
+      id: workshop.id,
+      title: workshop.title,
+      description: workshop.description,
+      start_at: workshop.start_at,
+      end_at: workshop.end_at,
+      total_reservations: 0,
+    }
+    return workshopDetailsRO;
   }
 
 

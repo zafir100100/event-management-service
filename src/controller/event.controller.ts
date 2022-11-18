@@ -11,6 +11,7 @@ import {
 import { Request } from 'express';
 import { GetActiveEventsDto } from 'src/dto/get-active-events.dto';
 import { GetEventDetailsDto } from 'src/dto/get-event-details.dto';
+import { GetWorkshopDetailsDto } from 'src/dto/get-workshop-details.dto';
 import { EventService } from 'src/provider/event.service';
 // import { TodoInterface, TodosService } from 'src/provider/todo.service';
 // interface CreateTodoDto {
@@ -49,6 +50,11 @@ export class EventController {
     return items;
     // const cats: Array<TodoInterface> = await this.todosService.findAll()
     // return cats
+  }
+  @Post('get-workshop-details')
+  async getWorkshopDetails(@Body() input: GetWorkshopDetailsDto) {
+    const workshop = await this.eventService.getWorkshopDetailsById(input);
+    return workshop;
   }
   // @Put(':id')
   // async update(@Param('id') id: string, @Body() body: any) {

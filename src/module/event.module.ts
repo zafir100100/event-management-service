@@ -5,9 +5,10 @@ import { Workshop } from 'src/entity/workshop.entity';
 import { WorkshopService } from 'src/provider/workshop.service';
 import { EventController } from '../controller/event.controller';
 import { EventService } from '../provider/event.service';
+import { WorkshopModule } from './workshop.module';
 @Module({
   imports: [TypeOrmModule.forFeature([Event, Workshop])],
   controllers: [EventController],
-  providers: [EventService, WorkshopService],
+  providers: [EventService],
 })
 export class EventModule {}
