@@ -31,7 +31,6 @@ export class Workshop {
   @ManyToOne(() => Event, (event) => event.workshops)
   event: Event;
 
-  @OneToMany(() => Reservation, (reservation) => reservation.workshop, { eager: true })
-  @JoinColumn()
+  @OneToMany(() => Reservation, (reservation) => reservation.workshop)
   reservations: Reservation[];
 }

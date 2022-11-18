@@ -38,6 +38,11 @@ export class EventController {
     const event = await this.eventService.getEventDetailsById(input);
     return event;
   }
+  @Get('get-active-workshops')
+  async getActiveWorkshops() {
+    const workshops = await this.eventService.getActiveWorkshops();
+    return workshops;
+  }
   @Get()
   async findAll(@Req() request: Request) {
     const items = await this.eventService.findAll();

@@ -8,12 +8,12 @@ import { ReservationModule } from './module/reservation.module';
 import { WorkshopModule } from './module/workshop.module';
 @Module({
   imports: [
-    TypeOrmModule.forRoot(devConfig),
+    TypeOrmModule.forRoot({ ...devConfig, autoLoadEntities: true }),
     EventModule,
-    ReservationModule,
     WorkshopModule,
+    ReservationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
