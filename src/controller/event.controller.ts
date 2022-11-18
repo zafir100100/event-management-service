@@ -51,11 +51,6 @@ export class EventController {
     // const cats: Array<TodoInterface> = await this.todosService.findAll()
     // return cats
   }
-  @Post('get-workshop-details')
-  async getWorkshopDetails(@Body() input: GetWorkshopDetailsDto) {
-    const workshop = await this.eventService.getWorkshopDetailsById(input);
-    return workshop;
-  }
   // @Put(':id')
   // async update(@Param('id') id: string, @Body() body: any) {
   //     const newCat: any = await this.todosService.update(id, body)

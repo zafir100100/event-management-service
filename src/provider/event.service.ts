@@ -85,26 +85,6 @@ export class EventService {
     });
     return events;
   }
-  async getWorkshopDetailsById(input: GetWorkshopDetailsDto): Promise<WorkshopDetailsRO> {
-    const workshop = await this.workshopRepository.findOneBy({
-      id: input.id,
-    });
-    // const reservationCount = await this.reservationRepository.count({
-    //   where: {
-    //     workshop_id: input.id,
-    //   },
-    // });
-    let workshopDetailsRO: WorkshopDetailsRO = {
-      id: workshop.id,
-      title: workshop.title,
-      description: workshop.description,
-      start_at: workshop.start_at,
-      end_at: workshop.end_at,
-      total_reservations: 0,
-    }
-    return workshopDetailsRO;
-  }
-
 
   // update(id: string, data: any): Promise<any> {
   //     return this.todoRepository
